@@ -51,6 +51,22 @@
             @error('type_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            <div class="mb-3">
+                <div>
+                    <label for="technologies" class="form-label">Tecnologie:</label>
+                </div>
+                @foreach ($technologies as $technology)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="tech-{{ $technology->id }}" name="technologies[]"
+                            value="{{ $technology->id }}"
+                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="tech-{{ $technology->id }}">{{ $technology->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+            @error('technologies')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <input type="submit" value="Aggiungi" class="btn btn-primary">
         </form>
     </div>

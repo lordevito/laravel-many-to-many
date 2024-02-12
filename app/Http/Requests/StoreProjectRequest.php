@@ -26,7 +26,8 @@ class StoreProjectRequest extends FormRequest
             'description' => 'string|nullable',
             'languages' => 'required|max:70',
             'frameworks' => 'required|max:50',
-            'type_id' => 'nullable|exists:types,id'
+            'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|exists:technologies,id'
         ];
     }
 
@@ -41,7 +42,8 @@ class StoreProjectRequest extends FormRequest
             'frameworks.required' => 'Frameworks utilizzati richiesti',
             'frameworks.max' => 'Numero massimo caratteri: :max',
             'title.unique' => 'Il titolo è già presente nel database',
-            'type_id.exists' => "L'id selezionato non è valido"
+            'type_id.exists' => "L'id selezionato non è valido",
+            'technologies.exists' => "L'id selezionato non è valido",
         ];
     }
 }

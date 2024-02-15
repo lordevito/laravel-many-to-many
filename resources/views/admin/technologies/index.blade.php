@@ -2,6 +2,7 @@
 
 @section('content')
     <h2 class="my-3">Lista delle tecnologie</h2>
+    <a href="{{ route('admin.technologies.create') }}" class="btn btn-primary btn-sm">Aggiungi una nuova tecnologia</a>
     @if (session('messages'))
         <div class="toast show position-fixed bottom-0 end-0 p-1 align-items-center text-bg-success border-0" role="alert"
             aria-live="assertive" aria-atomic="true">
@@ -29,12 +30,12 @@
                 <tr>
                     <td>{{ $technology->name }}</td>
                     <td class="col-8">{{ $technology->slug }}</td>
-                    <td><a href="{{ route('admin.types.edit', $technology) }}" class="btn btn-primary btn-sm">modifica</a>
+                    <td><a href="{{ route('admin.technologies.edit', $technology) }}" class="btn btn-primary btn-sm">modifica</a>
                     </td>
-                    <td><a href="{{ route('admin.types.show', $technology) }}" class="btn btn-secondary btn-sm">mostra</a>
+                    <td><a href="{{ route('admin.technologies.show', $technology) }}" class="btn btn-secondary btn-sm">mostra</a>
                     </td>
                     <td>
-                        <form action="{{ route('admin.types.destroy', $technology) }}" method="POST">
+                        <form action="{{ route('admin.technologies.destroy', $technology) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="button" value="cancella" class="btn btn-danger btn-sm" data-bs-toggle="modal"
@@ -46,7 +47,7 @@
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="modalLabel{{ $loop->iteration }}">Sei sicuro
                                                 di voler cancellare
-                                                il tipo '{{ $technology->name }}'?</h1>
+                                                la tecnologia '{{ $technology->name }}'?</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
